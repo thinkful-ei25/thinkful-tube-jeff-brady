@@ -61,17 +61,17 @@ const fetchVideos = function(searchTerm, callback) {
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
 
-const decorateResponse = function(response) {
-  // console.log(response); //test response
-  const returnItems = response.items; 
-  let results = returnItems.map(item => ({
-      id: item.id.videoId,
-      title: item.snippet.title,
-      url: item.snippet.thumbnails.default.url
-  }));
-// console.log(results); //test response
-return results;
-};
+// const decorateResponse = function(response) {
+//   // console.log(response); //test response
+//   const returnItems = response.items; 
+//   let results = returnItems.map(item => ({
+//       id: item.id.videoId,
+//       title: item.snippet.title,
+//       url: item.snippet.thumbnails.default.url
+//   }));
+// // console.log(results); //test response
+// return results;
+// };
 
 /**
  * @function generateVideoItemHtml
@@ -82,15 +82,15 @@ return results;
 // TASK:
 // 1. Using the decorated object, return an HTML string containing all the expected
 // TEST IT!
-const generateVideoItemHtml = function(video) {
-return `<li data-id="${video.id}">
-<h3>${video.title}</h3>
-<div>
-  <img src="${video.url}">
-</div>
-</li>
-`;
-};
+// const generateVideoItemHtml = function(video) {
+// return `<li data-id="${video.id}">
+// <h3>${video.title}</h3>
+// <div>
+//   <img src="${video.url}">
+// </div>
+// </li>
+// `;
+// };
 
 /**
  * @function addVideosToStore
@@ -113,11 +113,11 @@ const addVideosToStore = function(videos) {
 // 1. Map through `store.videos`, sending each `video` through `generateVideoItemHtml`
 // 2. Add this array of DOM elements to the appropriate DOM element
 // TEST IT!
-const render = function() {
+// const render = function() {
 
-const results = store.videos.map( item => generateVideoItemHtml(item));
-$('.results').html(results);
-};
+// const results = store.videos.map( item => generateVideoItemHtml(item));
+// $('.results').html(results);
+// };
 
 /**
  * @function handleFormSubmit
