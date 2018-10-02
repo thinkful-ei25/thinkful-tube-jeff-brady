@@ -1,0 +1,4 @@
+//decorate
+//generate
+//render
+//handleFormSubmit
