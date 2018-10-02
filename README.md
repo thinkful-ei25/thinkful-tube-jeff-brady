@@ -1,3 +1,23 @@
-### Thinkful - Learning AJAX with Tubeful
+### User Stories
 
-This is the starter files for the Thinkful Youtube API Lesson inside the Engineering Immersion course. It includes state management pattern but using a single file approach (no modules). Once completed, you should refactor to use the revealing module pattern covered in [this reading](https://github.com/rich-at-thinkful/ft-curric-gists/blob/master/fundamentals/modules.md).
+~ 1.) User loads page and sees search bar ~
+
+~ 2) User uses search bar by typing in input ~
+
+~ 3.) Have button with type="submit" that .on("click") ~
+
+~ 4.) Search bar resets so .val('') ~
+
+~ 5.) It access YouTube data API ~
+
+After submit, the user sees their page with the relevant display thumbnail images of the videos that match their search
+
+Headline of search matches
+
+OPTIONAL **********************************
+
+User able to click each thumbnail which takes them to associated YouTube video page
+
+Make images clickable via lightbox
+
+Show a for more button to get more results (pagination)
