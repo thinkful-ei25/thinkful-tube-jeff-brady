@@ -86,7 +86,7 @@ const generateVideoItemHtml = function(video) {
 return `<li data-id="${video.id}">
 <h3>${video.title}</h3>
 <div>
-  <img src="${video.thumbnail}">
+  <img src="${video.url}">
 </div>
 </li>
 `;
