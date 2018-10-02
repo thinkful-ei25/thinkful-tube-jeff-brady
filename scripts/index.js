@@ -38,7 +38,8 @@ const fetchVideos = function(searchTerm, callback) {
   const query = {
     part: 'snippet',
     key: API_KEY,
-    q: searchTerm
+    q: searchTerm,
+    maxResults: 10
 }
 
     $.getJSON(BASE_URL, query, callback);
@@ -59,8 +60,17 @@ const fetchVideos = function(searchTerm, callback) {
 //
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
-const decorateResponse = function(response) {
 
+const decorateResponse = function(response) {
+  console.log(response); //test response
+  const returnItems = response.items; 
+  let results = returnItems.map(item => ({
+      id: item.id.videoId,
+      title: item.snippet.title,
+      url: item.snippet.thumbnails.default.url
+  }));
+console.log(results); //test response
+return results;
 };
 
 /**
@@ -98,12 +108,16 @@ const addVideosToStore = function(videos) {
 // 2. Add this array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function(data) {
-  try {
-    console.log(data);
-  }
-  catch {
-      console.error('Could not complete');
-  }
+
+  
+  
+  
+  // try {
+  //   console.log(data);
+  // }
+  // catch {
+  //     console.error('Could not complete');
+  // }
 };
 
 /**
@@ -117,20 +131,20 @@ const render = function(data) {
 //   b) Retrieve the search input from the DOM
 //   c) Clear the search input field
 //   d) Invoke the `fetchVideos` function, sending in the search value
-//   e) Inside the callback, send the API response through the `decorateResponse` function
+//
+//   e) Inside the callback, send the API response (data) through the `decorateResponse` function
 //   f) Inside the callback, add the decorated response into your store using the 
 //      `addVideosToStore` function
 //   g) Inside the callback, run the `render` function 
-// TEST IT!
 const handleFormSubmit = function() {
 
   $('form').submit(event => {
     event.preventDefault();
     //access the value from the search form and store this 
-    const query = $(event.currentTarget).find('#search-term').val();
-    console.log(`received query: ${query}`);
+    const searchTerm = $(event.currentTarget).find('#search-term').val();
+    console.log(`received query: ${searchTerm}`); //for Testing
     $('#search-term').val('');
-    fetchVideos(query, render);
+    fetchVideos(searchTerm, render);
   }
   );
 };

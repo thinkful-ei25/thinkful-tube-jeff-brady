@@ -1,5 +1,5 @@
 ### User Stories
-
+~~Scratch this.~~
 ~~ 1.) User loads page and sees search bar ~~ 
 
 ~~ 2) User uses search bar by typing in input ~~ 
