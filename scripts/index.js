@@ -39,7 +39,7 @@ const fetchVideos = function(searchTerm, callback) {
     part: 'snippet',
     key: API_KEY,
     q: searchTerm,
-    maxResults: 10
+    // maxResults: 10
 }
 
     $.getJSON(BASE_URL, query, callback);
@@ -62,14 +62,14 @@ const fetchVideos = function(searchTerm, callback) {
 // you get back the object you want.
 
 const decorateResponse = function(response) {
-  console.log(response); //test response
+  // console.log(response); //test response
   const returnItems = response.items; 
   let results = returnItems.map(item => ({
       id: item.id.videoId,
       title: item.snippet.title,
       url: item.snippet.thumbnails.default.url
   }));
-console.log(results); //test response
+// console.log(results); //test response
 return results;
 };
 
@@ -83,7 +83,13 @@ return results;
 // 1. Using the decorated object, return an HTML string containing all the expected
 // TEST IT!
 const generateVideoItemHtml = function(video) {
-
+return `<li data-id="${video.id}">
+<h3>${video.title}</h3>
+<div>
+  <img src="${video.thumbnail}">
+</div>
+</li>
+`;
 };
 
 /**
@@ -95,7 +101,7 @@ const generateVideoItemHtml = function(video) {
 // 1. Set the received array as the value held in store.videos
 // TEST IT!
 const addVideosToStore = function(videos) {
-
+  store.videos = videos;
 };
 
 
@@ -107,17 +113,10 @@ const addVideosToStore = function(videos) {
 // 1. Map through `store.videos`, sending each `video` through `generateVideoItemHtml`
 // 2. Add this array of DOM elements to the appropriate DOM element
 // TEST IT!
-const render = function(data) {
+const render = function() {
 
-  
-  
-  
-  // try {
-  //   console.log(data);
-  // }
-  // catch {
-  //     console.error('Could not complete');
-  // }
+const results = store.videos.map( item => generateVideoItemHtml(item));
+$('.results').html(results);
 };
 
 /**
@@ -142,9 +141,13 @@ const handleFormSubmit = function() {
     event.preventDefault();
     //access the value from the search form and store this 
     const searchTerm = $(event.currentTarget).find('#search-term').val();
-    console.log(`received query: ${searchTerm}`); //for Testing
+    // console.log(`received query: ${searchTerm}`); //for Testing
     $('#search-term').val('');
-    fetchVideos(searchTerm, render);
+    fetchVideos(searchTerm, function(response){
+      let addedVideo = decorateResponse(response);
+      addVideosToStore(addedVideo);
+      render();
+    });
   }
   );
 };
