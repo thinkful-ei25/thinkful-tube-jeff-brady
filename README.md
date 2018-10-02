@@ -1,18 +1,18 @@
 ### User Stories
 
-~ 1.) User loads page and sees search bar ~
+~~ 1.) User loads page and sees search bar ~~ 
 
-~ 2) User uses search bar by typing in input ~
+~~ 2) User uses search bar by typing in input ~~ 
 
-~ 3.) Have button with type="submit" that .on("click") ~
+~~  3.) Have button with type="submit" that .on("click") ~~ 
 
-~ 4.) Search bar resets so .val('') ~
+~~ 4.) Search bar resets so .val('') ~~ 
 
-~ 5.) It access YouTube data API ~
+~~ 5.) It access YouTube data API ~~ 
 
-After submit, the user sees their page with the relevant display thumbnail images of the videos that match their search
+~~ 6.) After submit, the user sees their page with the relevant display thumbnail images of the videos that match their search ~~ 
 
-Headline of search matches
+~~ 7.) Headline of search matches ~~ 
 
 OPTIONAL **********************************
 
