@@ -1,5 +1,15 @@
-const store = (function() {
+const Store = (function() {
     const videos = [];
 
-    //add to store function
-})
+    function setVideos (videos) {
+        this.videos = videos;
+      }
+
+
+    return {
+        videos,
+        setVideos
+    }
+
+    
+}());
